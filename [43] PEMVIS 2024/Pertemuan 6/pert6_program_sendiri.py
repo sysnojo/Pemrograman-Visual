@@ -5,7 +5,7 @@ rowmax = 1500
 colmax = 1500
 
 num_shapes = 90
-max_radius = 300
+max_radius = 100
 
 Gambar = np.zeros(shape=(colmax+1, rowmax+1, 3), dtype=np.int16)
 
@@ -19,6 +19,10 @@ for _ in range(num_shapes):
     for y in range(center_y - radius, center_y + radius):
         for x in range(center_x - radius, center_x + radius):
             if (x - center_x)**2 + (y - center_y)**2 <= radius**2:
+                Gambar[y, x] = color
+            if (x - center_x)**2 >= 1 and (y - center_y)**2 >= 100 <= radius**2:
+                Gambar[y, x] = color
+            if (x - center_x)**2 >= 200 or (y - center_y)**2 >= 100 <= radius:
                 Gambar[y, x] = color
 
 plt.figure(figsize=(8, 8))
